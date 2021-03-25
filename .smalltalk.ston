@@ -1,0 +1,20 @@
+SmalltalkCISpec {
+	#loading : [
+		SCIMetacelloLoadSpec {
+			#platforms : [
+				#pharo
+			],
+			#baseline : 'OntoUMLModelQuery'
+		}
+	],
+	#testing : {
+		#coverage : {
+			#packages : [
+				'OntoUML-ModelQuery*'
+			]
+		},
+		#packages : [
+			'OntoUML-ModelQuery*'
+		]
+	}
+}
