@@ -13,7 +13,7 @@ BaselineOfOntoUMLModelQuery >> baseline: spec [
 				baseline: 'OntoUMLProfile-Plugin'
 				with: [ spec
 						className: 'BaselineOfOntoUMLProfile';
-						repository: 'github://openponk/ontouml-profile';
+						repository: 'github://openponk/ontouml-profile:v2.1.x';
 						loads: 'plugin' ].
 			spec
 				project: 'OntoUMLProfile'
