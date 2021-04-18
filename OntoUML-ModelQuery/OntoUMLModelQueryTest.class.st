@@ -296,3 +296,29 @@ OntoUMLModelQueryTest >> testGetTargetFrom [
 	result := association memberEnds second type.
 	self assert: (OntoUMLModelQuery getTargetFrom: association ) equals: result.
 ]
+
+{ #category : #tests }
+OntoUMLModelQueryTest >> testIsOclKindOf [
+	| stereotypeKind noStereotype stereotypeMixin |
+	stereotypeKind := OntoUMLKind new.
+	noStereotype := nil.
+	stereotypeMixin := OntoUMLMixin new.
+	self assert: (OntoUMLModelQuery is: stereotypeKind oclKindOf: 'Sortal') equals: true.
+	self assert: (OntoUMLModelQuery is: stereotypeKind oclKindOf: 'Kind') equals: true.
+	self assert: (OntoUMLModelQuery is: noStereotype oclKindOf: 'Sortal') equals: false.
+	self assert: (OntoUMLModelQuery is: stereotypeMixin oclKindOf: 'Sortal') equals: false.
+
+]
+
+{ #category : #tests }
+OntoUMLModelQueryTest >> testIsStereotypeOfOclKindOf [
+	| elementKind elementStereotypeLess elementMixin |
+	elementKind := self createClass: 'kind' withStereotype: OntoUMLKind.
+	elementStereotypeLess := OPUMLClass new.
+	elementMixin := self createClass: 'mixin' withStereotype: OntoUMLMixin.
+	self assert: (OntoUMLModelQuery isStereotypeOf: elementKind oclKindOf: 'Sortal') equals: true.
+	self assert: (OntoUMLModelQuery isStereotypeOf: elementKind oclKindOf: 'Kind') equals: true.
+	self assert: (OntoUMLModelQuery isStereotypeOf: elementStereotypeLess oclKindOf: 'Sortal') equals: false.
+	self assert: (OntoUMLModelQuery isStereotypeOf: elementMixin oclKindOf: 'Sortal') equals: false.
+
+]

@@ -137,3 +137,19 @@ OntoUMLModelQuery class >> getTargetEndFrom: aAssociation [
 OntoUMLModelQuery class >> getTargetFrom: aAssociation [
 	^ (self getTargetEndFrom: aAssociation) type.
 ]
+
+{ #category : #'accessing - stereotypes' }
+OntoUMLModelQuery class >> is: aStereotype oclKindOf: aStereotypeName [
+	aStereotype ifNil: [ ^false. ].
+	"else"
+	^  aStereotype oclIsKindOf: aStereotypeName. 
+]
+
+{ #category : #'accessing - stereotypes' }
+OntoUMLModelQuery class >> isStereotypeOf: aObject oclKindOf: aStereotypeName [
+	| stereotype |
+	stereotype := (self getStereotype: aObject).
+	stereotype ifNil: [ ^false. ].
+	"else"
+	^ self is: stereotype oclKindOf: aStereotypeName. 
+]
